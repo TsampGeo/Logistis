@@ -1,0 +1,7 @@
+{
+  "name": "logistis",
+  "version": "0.1.0",
+  "description": "Λογιστής: Greek accounting & tax assistant grounded in official sources (ΑΑΔΕ, ΦΕΚ, e-ΕΦΚΑ, ΕΡΓΑΝΗ).",
+  "author": { "name": "TsampGeo" },
+  "repository": "https://github.com/TsampGeo/Logistis"
+}
