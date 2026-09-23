@@ -1,0 +1,42 @@
+{
+  "name": "logistis",
+  "version": "0.1.0",
+  "description": "Greek accounting & tax assistant: MCP server + Claude plugin + ChatGPT app",
+  "scripts": {
+    "dev": "tsx watch src/http.ts",
+    "start": "node dist/http.js",
+    "start:stdio": "node dist/stdio.js",
+    "build": "tsc && node scripts/sync-skill.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "sync-skill": "node scripts/sync-skill.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TsampGeo/Logistis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/TsampGeo/Logistis/issues"
+  },
+  "homepage": "https://github.com/TsampGeo/Logistis#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.1",
+    "@napi-rs/canvas": "^1.0.9",
+    "express": "^5.2.1",
+    "unpdf": "^1.8.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  }
+}

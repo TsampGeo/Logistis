@@ -1,0 +1,11 @@
+{
+  "name": "logistis",
+  "owner": { "name": "TsampGeo" },
+  "plugins": [
+    {
+      "name": "logistis",
+      "source": "./plugin",
+      "description": "Λογιστής: Greek accounting & tax assistant grounded in official sources."
+    }
+  ]
+}
