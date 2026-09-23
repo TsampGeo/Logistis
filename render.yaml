@@ -1,0 +1,21 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: logistis
+    runtime: docker
+    plan: starter
+    region: frankfurt
+    healthCheckPath: /health
+    # Deploy merges to main only after the CI workflow passes.
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: LOGISTIS_TIMEZONE
+        value: Europe/Athens
+      - key: TRUST_PROXY
+        value: "1"
+      # Secret URL path segment. Paste a URL-safe value (see README); Render's
+      # generated values can contain "/" and "+", which break the URL.
+      - key: LOGISTIS_ACCESS_KEY
+        sync: false
+      - key: BRAVE_API_KEY
+        sync: false
