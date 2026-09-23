@@ -34,6 +34,24 @@ npm run build      # compiles to dist/ and regenerates the Claude skill
 
 Edit the rules in `instructions/logistis.el.md` only; `npm run sync-skill` copies them into `plugin/skills/logistis/SKILL.md`, and the server sends them as its MCP instructions and the `logistis` prompt.
 
+## Deploy (Render)
+
+The repo is a Render Blueprint (`render.yaml`): Docker, Starter plan, Frankfurt, redeployed after CI passes on `main`.
+
+1. Generate an access key (keep it private; it becomes part of the URL):
+   ```bash
+   node -e "console.log(require('crypto').randomBytes(24).toString('base64url'))"
+   ```
+2. Render dashboard → **New → Blueprint** → connect `TsampGeo/Logistis`.
+3. When asked, paste the key into `LOGISTIS_ACCESS_KEY` and optionally a Brave key into `BRAVE_API_KEY`.
+4. After the first deploy, the connector URL is:
+   ```
+   https://<service>.onrender.com/mcp/<LOGISTIS_ACCESS_KEY>
+   ```
+   Check `https://<service>.onrender.com/health` returns `{"ok":true}`.
+
+Anyone with the full URL can use the server, so share it only inside the office. To revoke access, change `LOGISTIS_ACCESS_KEY` in Render and update the connectors.
+
 ## Use with Claude Code
 
 ```bash
@@ -41,12 +59,12 @@ claude plugin marketplace add TsampGeo/Logistis
 claude plugin install logistis@logistis
 ```
 
-The plugin connects to `LOGISTIS_MCP_URL` (default `http://127.0.0.1:3000/mcp`), so run the server locally or set the variable to the deployed URL.
+The plugin connects to `LOGISTIS_MCP_URL` (default `http://127.0.0.1:3000/mcp`), so run the server locally or set the variable to the deployed URL including the key.
 
 ## Use with Claude.ai / Claude Desktop
 
-Settings → Connectors → Add custom connector → the deployed HTTPS URL ending in `/mcp`.
+Settings → Connectors → Add custom connector → the deployed URL `https://<service>.onrender.com/mcp/<key>`.
 
 ## Use with ChatGPT
 
-ChatGPT needs a public HTTPS URL. Settings → Apps & Connectors → Advanced → Developer mode, then create an app with the deployed `/mcp` URL.
+ChatGPT needs a public HTTPS URL. Settings → Apps & Connectors → Advanced → Developer mode, then create an app with the deployed URL `https://<service>.onrender.com/mcp/<key>` (no authentication).
