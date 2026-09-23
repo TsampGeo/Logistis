@@ -7,7 +7,7 @@ import { classifyUrl, domainsFor } from "./sources.js";
 
 export const INSTRUCTIONS = readFileSync(new URL("../instructions/logistis.el.md", import.meta.url), "utf8");
 
-const DEFAULT_TZ = process.env.LOGISTIS_TIMEZONE ?? "Europe/Tirane";
+const DEFAULT_TZ = process.env.LOGISTIS_TIMEZONE || "Europe/Athens";
 const MAX_TEXT_CHARS = 60_000;
 
 const TIER_LABEL = { primary: "Πρωτογενής (δεσμευτική)", secondary: "Δευτερογενής (συμπληρωματική)" } as const;
