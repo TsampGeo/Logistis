@@ -36,7 +36,7 @@ Edit the rules in `instructions/logistis.el.md` only; `npm run sync-skill` copie
 
 ## Deploy (Render)
 
-The repo is a Render Blueprint (`render.yaml`): Docker, Starter plan, Frankfurt, redeployed after CI passes on `main`.
+The repo is a Render Blueprint (`render.yaml`): Docker, Free plan, Frankfurt, redeployed after CI passes on `main`. The free plan sleeps after 15 minutes without traffic; the first request after that takes ~30–60 s while it wakes (retry if a connector times out). Switch to Starter in the Render dashboard for an always-on server.
 
 1. Generate an access key (keep it private; it becomes part of the URL):
    ```bash

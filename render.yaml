@@ -3,7 +3,7 @@ services:
   - type: web
     name: logistis
     runtime: docker
-    plan: starter
+    plan: free
     region: frankfurt
     healthCheckPath: /health
     # Deploy merges to main only after the CI workflow passes.
